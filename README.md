@@ -27,19 +27,25 @@ Disciplina da 4ª fase do curso de Engenharia de Software, visa a construção d
 Node.js (>= 18)
 
 - Criar arquivo .env dentro da pasta `backend`, com os seguintes dados:
-`# Alterar dados (xxxxx) conforme necessário`
-`DB_HOST=xxxxx`
-`DB_USER=xxxxx`
-`DB_PASS=xxxxx`
-`DB_NAME=xxxxx`
-`DB_PORT=xxxxx`
-`PORT=3000`
+```
+# Alterar dados (xxxxx) conforme necessário
+DB_HOST=xxxxx
+DB_USER=xxxxx
+DB_PASS=xxxxx
+DB_NAME=xxxxx
+DB_PORT=xxxxx
+PORT=3000
+```
 - Abrir um cmd, e rodar os seguintes comandos na pasta raiz do projeto
-`cd backend`
-`npm install`
-`npm start`
+```
+cd backend
+npm install
+npm start
+```
 - Abrir outro cmd, e rodar os seguintes comandos na pasta raiz do projeto
-`cd frontend`
-`npm install`
-`npm run dev`
+```
+cd frontend
+npm install
+npm run dev
+```
 Obs: os terminais precisam continuar abertos após a execução dos comandos
