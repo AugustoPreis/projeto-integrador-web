@@ -28,13 +28,40 @@ Node.js (>= 18)
 
 - Criar arquivo .env dentro da pasta `backend`, com os seguintes dados:
 ```
-# Alterar dados (xxxxx) conforme necessário
-DB_HOST=xxxxx
-DB_USER=xxxxx
-DB_PASS=xxxxx
-DB_NAME=xxxxx
-DB_PORT=xxxxx
+# Alterar dados abaixo conforme necessário
+
+#Porta do sistema (Evitar alterar)
 PORT=3000
+
+#Host do DB
+DB_HOST=
+
+#Usuário do DB
+DB_USER=
+
+#Login do DB
+DB_NAME=
+
+#Senha do DB
+DB_PASS=
+
+#Porta do DB
+DB_PORT=
+
+#Hash aleatória para o JWT
+JWT_TOKEN=JFiFNSnf0SNand91M8nf
+
+#Tempo de duração do login (1d até 365d)
+JWT_EXPIRE=1d
+
+#Ambiente de execução (DEV | PROD)
+NODE_ENV=
+
+#Mostrar mensagens de log (TRUE | FALSE)
+LOGGER=TRUE
+
+#Mostrar log dos SQL's executados (TRUE | FALSE)
+LOG_SQL=FALSE
 ```
 - Abrir um cmd, e rodar os seguintes comandos na pasta raiz do projeto
 ```
