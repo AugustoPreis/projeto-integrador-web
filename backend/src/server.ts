@@ -6,6 +6,8 @@ import compression from 'compression';
 import helmet from 'helmet';
 
 import { version } from '../package.json';
+import { errorHandler } from './middlewares/errorHandler';
+import { routes } from './routes/routes';
 import { Logger } from './utils/logger';
 import { Database } from './database';
 
@@ -38,6 +40,10 @@ app.get('*.js', (req, res, next) => {
 });
 
 app.use(express.static(path.join(__dirname + '/dist')));
+
+app.use(routes);
+
+app.use(errorHandler);
 
 app.get('/*', (_, res) => {
 	res.sendFile(path.join(__dirname, '/dist', 'index.html'));
