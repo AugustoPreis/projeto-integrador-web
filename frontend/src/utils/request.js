@@ -7,7 +7,7 @@ export default function request(url, context) {
     context.method = 'GET';
   }
 
-  if (['GET', 'POST', 'PUT', 'DELETE'].includes(context.method.toUpperCase())) {
+  if (!['GET', 'POST', 'PUT', 'DELETE'].includes(context.method.toUpperCase())) {
     context.method = 'GET';
   }
 
