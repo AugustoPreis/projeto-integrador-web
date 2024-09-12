@@ -79,6 +79,10 @@ function normalizeContext(url, dirt) {
   if (context.api !== false) {
     const token = getToken();
 
+    if (context.admin) {
+      context.url = `/admin${context.url}`;
+    }
+
     context.url = `/api${context.url}`;
 
     if (token) {
