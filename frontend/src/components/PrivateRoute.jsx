@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
 import { useNavigate, Outlet } from 'react-router-dom';
 import { useAuth } from '../providers/AuthProvider';
+
+const Menu = lazy(() => import('./Menu'));
 
 export default function PrivateRoute() {
   const auth = useAuth();
@@ -13,6 +15,11 @@ export default function PrivateRoute() {
   }, [auth.user]);
 
   return (
-    <Outlet />
+    <React.Fragment>
+      <Suspense fallback={<div>Carregando...</div>}>
+        <Menu />
+        <Outlet />
+      </Suspense>
+    </React.Fragment>
   );
 }
