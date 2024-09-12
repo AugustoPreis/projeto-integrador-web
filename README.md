@@ -63,6 +63,7 @@ LOGGER=TRUE
 #Mostrar log dos SQL's executados (TRUE | FALSE)
 LOG_SQL=FALSE
 ```
+- Executar os scripts de banco, localizados [`aqui`](backend/src/config/startup.sql)
 - Abrir um cmd, e rodar os seguintes comandos na pasta raiz do projeto
 ```
 cd backend
