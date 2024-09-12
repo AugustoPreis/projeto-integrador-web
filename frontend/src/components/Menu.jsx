@@ -16,7 +16,12 @@ function Menu() {
     {
       key: 'cadastros',
       label: 'Cadastros',
-      children: [],
+      children: [
+        {
+          key: 'funcoes',
+          label: 'Funções',
+        },
+      ],
     },
     {
       key: 'sair',
@@ -28,6 +33,11 @@ function Menu() {
       },
     },
   ];
+
+  //remove os cadastros caso não seja admin
+  if (!auth.isAdmin()) {
+    itens.splice(1, 1);
+  }
 
   const onSelect = (e) => {
     const { key } = e;
@@ -41,7 +51,7 @@ function Menu() {
   }
 
   return (
-    <Row>
+    <Row style={{ marginBottom: 15 }}>
       <Col span={24}>
         <MenuAntd items={itens}
           mode='horizontal'

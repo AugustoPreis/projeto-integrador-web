@@ -5,6 +5,7 @@ const PrivateRoute = lazy(() => import('../components/PrivateRoute'));
 
 const Login = lazy(() => import('../pages/login/Login'));
 const Dashboard = lazy(() => import('../pages/dashboard/Dashboard'));
+const Funcao = lazy(() => import('../pages/funcao/Funcao'));
 
 export default function AppRouter() {
   return (
@@ -19,6 +20,8 @@ export default function AppRouter() {
             element={<Dashboard />} />
           <Route path='/dashboard'
             element={<Dashboard />} />
+          <Route path='/funcoes'
+            element={<Funcao />} />
         </Route>
       </Routes>
     </BrowserRouter>
