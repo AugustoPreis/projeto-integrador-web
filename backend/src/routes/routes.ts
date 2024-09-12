@@ -9,7 +9,7 @@ routes.post('/login', (req, res, next) => {
   loginController.login(req, res, next);
 });
 
-routes.get('/api', auth, apiRoutes);
+routes.use('/api', auth, apiRoutes);
 
 routes.use('/*', (req, res) => {
   res.status(404).json({ message: `Rota não encontrada: ${req.baseUrl}` });
