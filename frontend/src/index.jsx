@@ -8,16 +8,14 @@ import AuthProvider from './providers/AuthProvider';
 const root = createRoot(document.getElementById('root'));
 
 root.render(
-  <React.StrictMode>
-    <ConfigProvider locale={ptBR}
-      theme={{
-        token: {
-          colorPrimary: '#ff5c04',
-        },
-      }}>
-      <AuthProvider>
-        <AppRouter />
-      </AuthProvider>
-    </ConfigProvider>
-  </React.StrictMode>,
+  <ConfigProvider locale={ptBR}
+    theme={{
+      token: {
+        colorPrimary: '#ff5c04',
+      },
+    }}>
+    <AuthProvider>
+      <AppRouter />
+    </AuthProvider>
+  </ConfigProvider>,
 );
