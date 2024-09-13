@@ -102,4 +102,25 @@ export class FuncaoController {
       next(err);
     }
   }
+
+  async deletar(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      const { id } = req.query;
+
+      if (!id) {
+        throw new Error('ID não informado');
+      }
+
+      const result = await funcaoRepository.deletar(Number(id));
+
+      if (!result || result.affected === 0) {
+        throw new Error(`Função com ID ${id} não encontrada`);
+      }
+
+      res.status(200).json(result);
+    } catch (err) {
+      res.status(404);
+      next(err);
+    }
+  }
 }

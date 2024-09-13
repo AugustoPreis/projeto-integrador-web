@@ -1,3 +1,4 @@
+import { DeleteResult } from 'typeorm';
 import { Database } from '../../database';
 import { Funcao } from '../../models/Funcao';
 import { Pagination } from '../../types/Pagination';
@@ -24,5 +25,9 @@ export class FuncaoRepository {
 
   async salvar(funcao: Funcao): Promise<Funcao> {
     return await this.database.save(funcao);
+  }
+
+  async deletar(id: number): Promise<DeleteResult> {
+    return await this.database.delete(id);
   }
 }

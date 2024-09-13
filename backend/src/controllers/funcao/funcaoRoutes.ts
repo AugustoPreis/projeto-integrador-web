@@ -19,4 +19,8 @@ routes.put('/salvar', (req, res, next) => {
   funcaoController.atualizar(req, res, next);
 });
 
+routes.delete('/deletar', (req, res, next) => {
+  funcaoController.deletar(req, res, next);
+});
+
 export { routes as funcaoRoutes };
