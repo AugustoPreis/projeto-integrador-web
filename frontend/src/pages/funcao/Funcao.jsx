@@ -8,7 +8,7 @@ import Item from './Item';
 const initialState = {
   pagination: {
     current: 1,
-    pageSize: 2,
+    pageSize: 5,
   },
 }
 
