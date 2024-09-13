@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Row, Modal, Form, Col, Input } from 'antd';
 import request from '../../utils/request';
 
-export default function Detalhes({ id, children }) {
+export default function Detalhes({ id, children, onClose }) {
   const [visible, setVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const [form] = Form.useForm();
@@ -49,6 +49,7 @@ export default function Detalhes({ id, children }) {
     }).then(() => {
       setLoading(false);
       handleClear();
+      onClose?.();
     }).catch((err) => {
       setLoading(false);
       Modal.error({

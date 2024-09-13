@@ -1,5 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { funcaoRepository } from '.';
+import { isValidString } from '../../utils/validators';
+import { Funcao } from '../../models/Funcao';
 
 export class FuncaoController {
 
@@ -43,6 +45,27 @@ export class FuncaoController {
       if (!result) {
         throw new Error(`Função com ID ${id} não encontrada`);
       }
+
+      res.status(200).json(result);
+    } catch (err) {
+      res.status(404);
+      next(err);
+    }
+  }
+
+  async salvar(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      const { descricao } = req.body;
+
+      if (!isValidString(descricao)) {
+        throw new Error('A descrição é obrigatória');
+      }
+
+      const funcao = new Funcao();
+
+      funcao.descricao = descricao.trim();
+
+      const result = await funcaoRepository.salvar(funcao);
 
       res.status(200).json(result);
     } catch (err) {

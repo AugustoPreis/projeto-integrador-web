@@ -21,4 +21,8 @@ export class FuncaoRepository {
       .where('funcao.id = :id', { id })
       .getOne();
   }
+
+  async salvar(funcao: Funcao): Promise<Funcao> {
+    return await this.database.save(funcao);
+  }
 }
