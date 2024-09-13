@@ -14,4 +14,11 @@ export class FuncaoRepository {
       .orderBy('funcao.descricao')
       .getManyAndCount();
   }
+
+  async byId(id: number): Promise<Funcao> {
+    return await this.database
+      .createQueryBuilder('funcao')
+      .where('funcao.id = :id', { id })
+      .getOne();
+  }
 }
