@@ -51,7 +51,7 @@ function Menu() {
   }
 
   return (
-    <Row style={{ marginBottom: 15 }}>
+    <Row style={{ margin: '15px 0px' }}>
       <Col span={24}>
         <MenuAntd items={itens}
           mode='horizontal'
