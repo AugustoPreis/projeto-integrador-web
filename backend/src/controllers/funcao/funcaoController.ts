@@ -73,4 +73,33 @@ export class FuncaoController {
       next(err);
     }
   }
+
+  async atualizar(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      const { id, descricao } = req.body;
+
+      if (!id) {
+        throw new Error('ID não informado');
+      }
+
+      if (!isValidString(descricao)) {
+        throw new Error('A descrição é obrigatória');
+      }
+
+      const funcaoDB = await funcaoRepository.byId(Number(id));
+
+      if (!funcaoDB) {
+        throw new Error(`Função com ID ${id} não encontrada`);
+      }
+
+      funcaoDB.descricao = descricao.trim();
+
+      const result = await funcaoRepository.salvar(funcaoDB);
+
+      res.status(200).json(result);
+    } catch (err) {
+      res.status(404);
+      next(err);
+    }
+  }
 }
