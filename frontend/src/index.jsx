@@ -4,6 +4,7 @@ import { ConfigProvider } from 'antd';
 import ptBR from 'antd/lib/locale/pt_BR';
 import AppRouter from './router/AppRouter';
 import AuthProvider from './providers/AuthProvider';
+import Screen from './components/Screen';
 
 const root = createRoot(document.getElementById('root'));
 
@@ -15,7 +16,9 @@ root.render(
       },
     }}>
     <AuthProvider>
-      <AppRouter />
+      <Screen>
+        <AppRouter />
+      </Screen>
     </AuthProvider>
   </ConfigProvider>,
 );

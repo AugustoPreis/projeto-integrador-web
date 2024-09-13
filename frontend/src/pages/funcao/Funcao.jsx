@@ -71,7 +71,7 @@ export default function Funcao() {
   }
 
   return (
-    <Screen>
+    <React.Fragment>
       <Card>
         <Row gutter={[10, 5]}>
           <Col xl={6}
@@ -116,6 +116,6 @@ export default function Funcao() {
           </Row>
         </Spin>
       </Card>
-    </Screen>
+    </React.Fragment>
   );
 }

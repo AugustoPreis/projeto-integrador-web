@@ -5,7 +5,7 @@ export default function Screen({ children }) {
 
   return (
     <Row justify='center'>
-      <Col span={24}>
+      <Col span={23}>
         {children}
       </Col>
     </Row>
