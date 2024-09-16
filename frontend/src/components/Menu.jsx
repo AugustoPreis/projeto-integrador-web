@@ -21,6 +21,10 @@ function Menu() {
           key: 'funcoes',
           label: 'Funções',
         },
+        {
+          key: 'clientes',
+          label: 'Clientes',
+        },
       ],
     },
     {
