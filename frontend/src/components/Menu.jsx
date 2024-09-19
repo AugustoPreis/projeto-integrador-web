@@ -33,6 +33,10 @@ function Menu() {
           key: 'tipos-servico',
           label: 'Tipos de Serviço',
         },
+        {
+          key: 'produtos',
+          label: 'Produtos',
+        },
       ],
     },
     {

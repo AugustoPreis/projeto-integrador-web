@@ -9,6 +9,7 @@ const Funcao = lazy(() => import('../pages/funcao/Funcao'));
 const Cliente = lazy(() => import('../pages/cliente/Cliente'));
 const Funcionario = lazy(() => import('../pages/funcionario/Funcionario'));
 const TipoServico = lazy(() => import('../pages/tipoServico/TipoServico'));
+const Produtos = lazy(() => import('../pages/produto/Produto'));
 
 export default function AppRouter() {
   return (
@@ -31,6 +32,8 @@ export default function AppRouter() {
             element={<Funcionario />} />
           <Route path='/tipos-servico'
             element={<TipoServico />} />
+          <Route path='/produtos'
+            element={<Produtos />} />
         </Route>
       </Routes>
     </BrowserRouter>
