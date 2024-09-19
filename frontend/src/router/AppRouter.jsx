@@ -7,6 +7,7 @@ const Login = lazy(() => import('../pages/login/Login'));
 const Dashboard = lazy(() => import('../pages/dashboard/Dashboard'));
 const Funcao = lazy(() => import('../pages/funcao/Funcao'));
 const Cliente = lazy(() => import('../pages/cliente/Cliente'));
+const Funcionarios = lazy(() => import('../pages/funcionario/Funcionario'));
 
 export default function AppRouter() {
   return (
@@ -25,6 +26,8 @@ export default function AppRouter() {
             element={<Funcao />} />
           <Route path='/clientes'
             element={<Cliente />} />
+          <Route path='/funcionarios'
+            element={<Funcionarios />} />
         </Route>
       </Routes>
     </BrowserRouter>
