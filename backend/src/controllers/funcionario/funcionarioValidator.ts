@@ -1,5 +1,5 @@
-import { Funcao } from '../../models/Funcao';
-import { Funcionario } from '../../models/Funcionario';
+import { Funcao } from '../funcao';
+import { Funcionario } from '../funcionario';
 import { isValidString } from '../../utils/validators';
 
 export class FuncionarioValidator {

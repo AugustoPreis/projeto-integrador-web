@@ -1,3 +1,4 @@
+import { Produto } from '../../models/Produto';
 import { ProdutoController } from './produtoController';
 import { ProdutoRepository } from './produtoRepository';
 import { ProdutoValidator } from './produtoValidator';
@@ -8,6 +9,7 @@ const produtoRepository = new ProdutoRepository();
 const produtoValidator = new ProdutoValidator();
 
 export {
+  Produto,
   produtoController,
   produtoRepository,
   produtoValidator,

@@ -1,6 +1,6 @@
 import { isDate } from 'date-fns';
 import { isValidString } from '../../utils/validators';
-import { Cliente } from '../../models/Cliente';
+import { Cliente } from '.';
 import { EMAIL_VALIDATOR } from '../../utils/regex';
 
 export class ClienteValidator {

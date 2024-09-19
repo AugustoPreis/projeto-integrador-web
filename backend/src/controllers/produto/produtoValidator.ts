@@ -1,4 +1,4 @@
-import { Produto } from '../../models/Produto';
+import { Produto } from '.';
 import { isValidCurrency, isValidString } from '../../utils/validators';
 
 export class ProdutoValidator {

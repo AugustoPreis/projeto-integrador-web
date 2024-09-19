@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { funcaoRepository } from '.';
 import { isValidString } from '../../utils/validators';
-import { Funcao } from '../../models/Funcao';
+import { Funcao } from '.';
 
 export class FuncaoController {
 

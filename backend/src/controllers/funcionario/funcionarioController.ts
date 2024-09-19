@@ -1,6 +1,6 @@
 import { funcionarioRepository, funcionarioValidator } from '.';
 import { isValidString } from '../../utils/validators';
-import { Funcionario } from '../../models/Funcionario';
+import { Funcionario } from '.';
 import { NextFunction, Request, Response } from 'express';
 import { string } from '../../utils/normalizers';
 import { funcaoRepository } from '../funcao';

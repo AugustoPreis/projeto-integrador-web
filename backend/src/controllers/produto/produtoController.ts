@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { isValidString } from '../../utils/validators';
 import { produtoRepository, produtoValidator } from '.';
-import { Produto } from '../../models/Produto';
+import { Produto } from '.';
 import { currency, string } from '../../utils/normalizers';
 
 export class ProdutoController {

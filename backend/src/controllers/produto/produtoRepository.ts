@@ -1,5 +1,5 @@
 import { Database } from '../../database';
-import { Produto } from '../../models/Produto';
+import { Produto } from '.';
 import { Pagination } from '../../types/Pagination';
 
 export class ProdutoRepository {

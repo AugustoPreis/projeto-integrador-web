@@ -1,3 +1,4 @@
+import { TipoServico } from '../../models/TipoServico';
 import { TipoServicoController } from './tipoServicoController';
 import { TipoServicoRepository } from './tipoServicoRepository';
 import { TipoServicoValidator } from './tipoServicoValidator';
@@ -8,6 +9,7 @@ const tipoServicoRepository = new TipoServicoRepository();
 const tipoServicoValidator = new TipoServicoValidator();
 
 export {
+  TipoServico,
   tipoServicoController,
   tipoServicoRepository,
   tipoServicoValidator,

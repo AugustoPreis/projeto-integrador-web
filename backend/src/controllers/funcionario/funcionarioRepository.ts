@@ -1,5 +1,5 @@
 import { Database } from '../../database';
-import { Funcionario } from '../../models/Funcionario';
+import { Funcionario } from '.';
 import { Pagination } from '../../types/Pagination';
 
 export class FuncionarioRepository {

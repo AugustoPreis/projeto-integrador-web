@@ -1,6 +1,6 @@
+import { Funcao } from '.';
 import { DeleteResult } from 'typeorm';
 import { Database } from '../../database';
-import { Funcao } from '../../models/Funcao';
 import { Pagination } from '../../types/Pagination';
 
 export class FuncaoRepository {

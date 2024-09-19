@@ -1,4 +1,4 @@
-import { Cliente } from '../../models/Cliente';
+import { Cliente } from '.';
 import { Database } from '../../database';
 import { Pagination } from '../../types/Pagination';
 import { DeleteResult } from 'typeorm';

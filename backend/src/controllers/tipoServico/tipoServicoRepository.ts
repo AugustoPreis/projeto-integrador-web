@@ -1,6 +1,6 @@
 import { DeleteResult } from 'typeorm';
 import { Database } from '../../database';
-import { TipoServico } from '../../models/TipoServico';
+import { TipoServico } from '.';
 import { Pagination } from '../../types/Pagination';
 
 export class TipoServicoRepository {

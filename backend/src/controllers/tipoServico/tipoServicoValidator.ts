@@ -1,4 +1,4 @@
-import { TipoServico } from '../../models/TipoServico';
+import { TipoServico } from '.';
 import { isValidString } from '../../utils/validators';
 
 export class TipoServicoValidator {

@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { isValidString } from '../../utils/validators';
 import { tipoServicoRepository, tipoServicoValidator } from '.';
-import { TipoServico } from '../../models/TipoServico';
+import { TipoServico } from '.';
 import { string } from '../../utils/normalizers';
 
 export class TipoServicoController {
