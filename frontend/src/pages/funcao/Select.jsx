@@ -1,7 +1,7 @@
 import React from 'react';
 import DataSelect from '../../components/DataSelect';
 
-function FuncaoSelect(props) {
+export default function FuncaoSelect(props) {
 
   return (
     <DataSelect {...props}
@@ -9,5 +9,3 @@ function FuncaoSelect(props) {
       format='descricao' />
   );
 }
-
-export default FuncaoSelect;

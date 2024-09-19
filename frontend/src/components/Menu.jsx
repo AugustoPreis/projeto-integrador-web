@@ -4,7 +4,7 @@ import { Col, Row, Menu as MenuAntd } from 'antd';
 import { LogoutOutlined } from '@ant-design/icons';
 import { useAuth } from '../providers/AuthProvider';
 
-function Menu() {
+export default function Menu() {
   const [selectedKey, setSelectedKey] = useState('');
   const navigate = useNavigate();
   const auth = useAuth();
@@ -80,5 +80,3 @@ function Menu() {
     </Row>
   );
 }
-
-export default Menu;

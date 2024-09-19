@@ -1,13 +1,11 @@
 import React from 'react';
 import DataSelect from '../../components/DataSelect';
 
-function FuncaoSelect(props) {
+export default function TipoServicoSelect(props) {
 
   return (
     <DataSelect {...props}
-      url='/funcao/listagem'
+      url='/tipo-servico/listagem'
       format='descricao' />
   );
 }
-
-export default FuncaoSelect;

@@ -3,7 +3,7 @@ import { AutoComplete, message } from 'antd';
 import { CloseCircleFilled, DownOutlined, UpOutlined, LoadingOutlined } from '@ant-design/icons';
 import request from '../utils/request';
 
-function DataSelect(props) {
+export default function DataSelect(props) {
   const [loading, setLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [searchValue, setSearchValue] = useState('');
@@ -141,5 +141,3 @@ function DataSelect(props) {
       onDropdownVisibleChange={(open) => setIsOpen(open)} />
   );
 }
-
-export default DataSelect;
