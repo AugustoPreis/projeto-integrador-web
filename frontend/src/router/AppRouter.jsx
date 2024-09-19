@@ -7,7 +7,8 @@ const Login = lazy(() => import('../pages/login/Login'));
 const Dashboard = lazy(() => import('../pages/dashboard/Dashboard'));
 const Funcao = lazy(() => import('../pages/funcao/Funcao'));
 const Cliente = lazy(() => import('../pages/cliente/Cliente'));
-const Funcionarios = lazy(() => import('../pages/funcionario/Funcionario'));
+const Funcionario = lazy(() => import('../pages/funcionario/Funcionario'));
+const TipoServico = lazy(() => import('../pages/tipoServico/TipoServico'));
 
 export default function AppRouter() {
   return (
@@ -27,7 +28,9 @@ export default function AppRouter() {
           <Route path='/clientes'
             element={<Cliente />} />
           <Route path='/funcionarios'
-            element={<Funcionarios />} />
+            element={<Funcionario />} />
+          <Route path='/tipos-servico'
+            element={<TipoServico />} />
         </Route>
       </Routes>
     </BrowserRouter>

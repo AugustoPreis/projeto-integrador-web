@@ -29,6 +29,10 @@ function Menu() {
           key: 'funcionarios',
           label: 'Funcionários',
         },
+        {
+          key: 'tipos-servico',
+          label: 'Tipos de Serviço',
+        },
       ],
     },
     {
