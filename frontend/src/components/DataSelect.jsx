@@ -127,7 +127,8 @@ function DataSelect(props) {
   }
 
   return (
-    <AutoComplete ref={autoCompleteRef}
+    <AutoComplete {...props}
+      ref={autoCompleteRef}
       defaultActiveFirstOption
       onSelect={onSelect}
       value={props.value ? formatLabel(props.value) : searchValue}
