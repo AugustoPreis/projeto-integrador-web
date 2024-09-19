@@ -1,7 +1,14 @@
+import { isValidNumber } from './validators';
+
 export interface StringOptions {
   trim?: boolean;
   lower?: boolean;
   upper?: boolean;
+}
+
+export interface CurrencyOptions {
+  precision?: number;
+  negative?: boolean;
 }
 
 export function string(value: unknown, options: StringOptions = {}): string | null {
@@ -38,4 +45,24 @@ export function date(value: unknown): Date | null {
   }
 
   return date;
+}
+
+export function currency(value: unknown, options: CurrencyOptions = {}): number | null {
+  let currency = Number(value);
+
+  if (!isValidNumber(currency)) {
+    return null;
+  }
+
+  if (currency < 0 && !options.negative) {
+    currency = 0;
+  }
+
+  if (options.precision) {
+    const pow = Math.pow(10, options.precision);
+
+    currency = Math.round(currency * pow) / pow;
+  }
+
+  return currency;
 }
