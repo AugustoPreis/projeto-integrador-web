@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card, Col, Input, message, Modal, Pagination, Row, Spin } from 'antd';
-import Screen from '../../components/Screen';
 import request from '../../utils/request';
 import Detalhes from './Detalhes';
 import Item from './Item';
