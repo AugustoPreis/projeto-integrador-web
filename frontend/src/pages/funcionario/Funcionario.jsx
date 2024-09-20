@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card, Col, Input, message, Modal, Pagination, Row, Spin } from 'antd';
+import { useTitle } from '../../hooks/useTitle';
 import request from '../../utils/request';
+import FuncaoSelect from '../funcao/Select';
 import Detalhes from './Detalhes';
 import Item from './Item';
-import FuncaoSelect from '../funcao/Select';
 
 const initialState = {
   pagination: {
@@ -17,6 +18,8 @@ export default function Funcionario() {
   const [filtro, setFiltro] = useState({});
   const [data, setData] = useState([]);
   const [pagination, setPagination] = useState(initialState.pagination);
+
+  useTitle('Funcionários');
 
   useEffect(() => {
     const timeout = setTimeout(() => {

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card, Col, Input, message, Modal, Pagination, Row, Spin } from 'antd';
+import { useTitle } from '../../hooks/useTitle';
 import request from '../../utils/request';
 import Detalhes from './Detalhes';
 import Item from './Item';
@@ -16,6 +17,8 @@ export default function Cliente() {
   const [filtro, setFiltro] = useState({});
   const [data, setData] = useState([]);
   const [pagination, setPagination] = useState(initialState.pagination);
+
+  useTitle('Clientes');
 
   useEffect(() => {
     const timeout = setTimeout(() => {

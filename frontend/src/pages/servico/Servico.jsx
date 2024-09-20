@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card, Col, InputNumber, message, Modal, Pagination, Row, Spin } from 'antd';
+import { useTitle } from '../../hooks/useTitle';
 import request from '../../utils/request';
-import Detalhes from './Detalhes';
-import Item from './Item';
 import ClienteSelect from '../cliente/Select';
 import ProdutoSelect from '../produto/Select';
 import TipoServicoSelect from '../tipoServico/Select';
+import Detalhes from './Detalhes';
+import Item from './Item';
 
 const initialState = {
   pagination: {
@@ -19,6 +20,8 @@ export default function Servico() {
   const [filtro, setFiltro] = useState({});
   const [data, setData] = useState([]);
   const [pagination, setPagination] = useState(initialState.pagination);
+
+  useTitle('Serviços');
 
   useEffect(() => {
     const timeout = setTimeout(() => {
