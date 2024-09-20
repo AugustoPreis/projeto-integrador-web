@@ -1,9 +1,11 @@
 import React, { lazy } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
+//login não deve ser importado com lazy
+import Login from '../pages/login/Login';
+
 const PrivateRoute = lazy(() => import('../components/PrivateRoute'));
 
-const Login = lazy(() => import('../pages/login/Login'));
 const Dashboard = lazy(() => import('../pages/dashboard/Dashboard'));
 const Funcao = lazy(() => import('../pages/funcao/Funcao'));
 const Cliente = lazy(() => import('../pages/cliente/Cliente'));
