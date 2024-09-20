@@ -1,5 +1,6 @@
-import React, { lazy, Suspense, useEffect } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { Col, Row } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import { useAuth } from '../providers/AuthProvider';
@@ -14,7 +15,17 @@ export default function PrivateRoute() {
     if (!auth.isAuthenticated()) {
       navigate('/entrar');
     }
-  }, [auth.user]);
+
+    axios.interceptors.response.use((response) => response, (response) => {
+      if (response.status === 401) {
+        auth.logout();
+        navigate('/entrar');
+      }
+
+      return Promise.reject(response);
+    });
+  }, []);
+
 
   return (
     <React.Fragment>
