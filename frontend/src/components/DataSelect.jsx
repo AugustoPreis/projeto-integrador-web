@@ -10,6 +10,10 @@ export default function DataSelect(props) {
   const [data, setData] = useState([]);
   const autoCompleteRef = useRef();
   const suffixIcon = useMemo(() => {
+    if (props.disabled) {
+      return null;
+    }
+
     if (searchValue || props.value) {
       return <CloseCircleFilled onClick={() => handleClear(true)} />;
     }
@@ -23,7 +27,7 @@ export default function DataSelect(props) {
     }
 
     return <UpOutlined />
-  }, [loading, searchValue, isOpen, props.value]);
+  }, [loading, searchValue, isOpen, props.value, props.disabled]);
 
   useEffect(() => {
     if (!isOpen) {
