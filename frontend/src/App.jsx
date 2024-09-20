@@ -27,16 +27,16 @@ export default function App() {
         xs={24}>
         <Screen>
           <Row gutter={[0, 10]}>
-            <Col lg={24}
-              xs={0}>
+            <Col span={24}>
               <Card style={{ border: '1px solid #d9d9d9' }}>
                 <Row justify='space-between'>
-                  <Col xl={20}
-                    lg={18}
-                    style={{ fontSize: 20 }}>
+                  <Col style={{ fontSize: 20 }}
+                    md={6}
+                    sm={12}
+                    xs={24}>
                     Portal Startec
                   </Col>
-                  <Col>
+                  <Col style={{ padding: '5px 0px' }}>
                     <Tag color={isAdmin ? 'green' : 'blue'}
                       style={{ fontSize: 14 }}>
                       {auth.user.nome}

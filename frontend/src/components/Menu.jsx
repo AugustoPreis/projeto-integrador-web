@@ -76,9 +76,13 @@ export default function Menu() {
     const { key } = e;
 
     if (key === 'sair') {
-      return auth.logout();
+      auth.logout();
+      navigate('/entrar');
+
+      return;
     }
 
+    setVisible(false);
     setSelectedKey(key);
     navigate(key);
   }
