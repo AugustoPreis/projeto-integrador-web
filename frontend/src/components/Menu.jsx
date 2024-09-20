@@ -40,6 +40,13 @@ export default function Menu() {
           key: 'produtos',
           label: 'Produtos',
         },
+      ],
+    },
+    {
+      key: 'processos',
+      label: 'Processos',
+      type: 'group',
+      children: [
         {
           key: 'servicos',
           label: 'Serviços',
@@ -68,7 +75,7 @@ export default function Menu() {
 
   //remove os cadastros caso não seja admin
   if (!auth.isAdmin()) {
-    itens.splice(1, 1);
+    itens.splice(1, 2);
   }
 
   const onSelect = (e) => {
