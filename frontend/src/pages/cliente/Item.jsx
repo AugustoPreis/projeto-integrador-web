@@ -1,38 +1,55 @@
 import React from 'react';
-import { Button, Col, Divider, Popconfirm, Row } from 'antd';
+import { format } from 'date-fns';
+import { Button, Col, Card, Popconfirm, Row } from 'antd';
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
+import ItemRender from '../../components/ItemRender';
 import Detalhes from './Detalhes';
 
 export default function Item({ cliente, onDelete, fetch }) {
 
   return (
-    <Row gutter={[10, 5]}>
-      <Col span={20}>
-        <b style={{ fontSize: 18, opacity: 0.8 }}>
-          {cliente.nome}
-        </b>
-      </Col>
-      <Col span={4}>
-        <Row gutter={[5, 5]}
-          justify='end'>
-          <Col>
-            <Detalhes id={cliente.id}
-              onClose={fetch}>
-              <Button icon={<EditOutlined />} />
-            </Detalhes>
-          </Col>
-          <Col>
-            <Popconfirm title='Deseja excluir?'
-              onConfirm={onDelete}>
-              <Button danger
-                icon={<DeleteOutlined />} />
-            </Popconfirm>
-          </Col>
-        </Row>
-      </Col>
-      <Col span={24}>
-        <Divider style={{ margin: '20px 0px' }} />
-      </Col>
-    </Row>
+    <Card>
+      <Row gutter={[10, 5]}
+        align='middle'>
+        <Col span={20}>
+          <Row gutter={[10, 5]}>
+            <Col span={24}
+              style={{ fontSize: 20 }}>
+              {cliente.nome}
+            </Col>
+            <Col>
+              <ItemRender title='Início Acesso:'>
+                {format(new Date(cliente.inicioAcesso), 'dd/MM/yyyy')}
+              </ItemRender>
+            </Col>
+            {cliente.fimAcesso ? (
+              <Col style={{ marginLeft: 20 }}>
+                <ItemRender title='Fim Acesso:'>
+                  {format(new Date(cliente.inicioAcesso), 'dd/MM/yyyy')}
+                </ItemRender>
+              </Col>
+            ) : null}
+          </Row>
+        </Col>
+        <Col span={4}>
+          <Row gutter={[5, 5]}
+            justify='end'>
+            <Col>
+              <Detalhes id={cliente.id}
+                onClose={fetch}>
+                <Button icon={<EditOutlined />} />
+              </Detalhes>
+            </Col>
+            <Col>
+              <Popconfirm title='Deseja excluir?'
+                onConfirm={onDelete}>
+                <Button danger
+                  icon={<DeleteOutlined />} />
+              </Popconfirm>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
+    </Card>
   );
 }
