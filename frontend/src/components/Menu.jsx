@@ -56,14 +56,8 @@ export default function Menu() {
     {
       key: 'sair',
       label: 'Sair',
-      icon: <LogoutOutlined style={{ fontSize: 18 }} />,
-      style: {
-        color: 'red',
-        position: 'absolute',
-        bottom: '0',
-        width: '100%',
-        fontSize: 18,
-      },
+      icon: <LogoutOutlined />,
+      style: { color: 'red' },
     },
   ];
 
