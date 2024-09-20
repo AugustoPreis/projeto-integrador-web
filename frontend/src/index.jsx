@@ -16,9 +16,7 @@ root.render(
       },
     }}>
     <AuthProvider>
-      <Screen>
-        <AppRouter />
-      </Screen>
+      <AppRouter />
     </AuthProvider>
   </ConfigProvider>,
 );

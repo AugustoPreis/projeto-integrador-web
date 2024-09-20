@@ -1,8 +1,10 @@
 import React, { lazy, Suspense, useEffect } from 'react';
-import { useNavigate, Outlet } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { Col, Row } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
 import { useAuth } from '../providers/AuthProvider';
+import App from '../App';
 
-const Menu = lazy(() => import('./Menu'));
 
 export default function PrivateRoute() {
   const auth = useAuth();
@@ -16,9 +18,20 @@ export default function PrivateRoute() {
 
   return (
     <React.Fragment>
-      <Suspense fallback={<div>Carregando...</div>}>
-        <Menu />
-        <Outlet />
+      <Suspense fallback={
+        <Row justify='center'
+          gutter={[15, 5]}
+          align='middle'
+          style={{ height: 'calc(100vh - 16px)' }}>
+          <Col style={{ fontSize: 20 }}>
+            <LoadingOutlined />
+          </Col>
+          <Col style={{ fontSize: 20 }}>
+            Carregando
+          </Col>
+        </Row>
+      }>
+        <App />
       </Suspense>
     </React.Fragment>
   );

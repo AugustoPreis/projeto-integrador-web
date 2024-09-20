@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Col, Row, Menu as MenuAntd } from 'antd';
-import { LogoutOutlined } from '@ant-design/icons';
+import { Button, Drawer, Menu as MenuAntd } from 'antd';
+import { LogoutOutlined, MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 import { useAuth } from '../providers/AuthProvider';
+import Screen from './Screen';
 
 export default function Menu() {
   const [selectedKey, setSelectedKey] = useState('');
+  const [visible, setVisible] = useState(false);
   const navigate = useNavigate();
   const auth = useAuth();
   const itens = [
@@ -16,6 +18,7 @@ export default function Menu() {
     {
       key: 'cadastros',
       label: 'Cadastros',
+      type: 'group',
       children: [
         {
           key: 'funcoes',
@@ -46,13 +49,22 @@ export default function Menu() {
     {
       key: 'sair',
       label: 'Sair',
-      icon: <LogoutOutlined />,
+      icon: <LogoutOutlined style={{ fontSize: 18 }} />,
       style: {
-        marginLeft: 'auto',
         color: 'red',
+        position: 'absolute',
+        bottom: '0',
+        width: '100%',
+        fontSize: 18,
       },
     },
   ];
+
+  useEffect(() => {
+    if (!selectedKey) {
+      setSelectedKey(window.location.pathname.substring(1));
+    }
+  }, []);
 
   //remove os cadastros caso não seja admin
   if (!auth.isAdmin()) {
@@ -70,17 +82,45 @@ export default function Menu() {
     navigate(key);
   }
 
+  if (innerWidth < 992) {
+    return (
+      <Screen>
+        <Button style={{ margin: '10px 0px' }}
+          onClick={() => setVisible(!visible)}
+          icon={visible ? <MenuFoldOutlined /> : <MenuUnfoldOutlined />}>
+          Menu
+        </Button>
+        <Drawer closable={false}
+          onClose={() => setVisible(false)}
+          width={300}
+          open={visible}
+          placement='left'
+          styles={{
+            body: {
+              padding: 0,
+              backgroundColor: '#edf5ef',
+            },
+          }}>
+          <MenuAntd mode='vertical'
+            items={itens}
+            onSelect={onSelect}
+            selectedKeys={[selectedKey]}
+            style={{ backgroundColor: '#edf5ef', color: '#000' }} />
+        </Drawer>
+      </Screen>
+    );
+  }
+
   return (
-    <Row style={{ margin: '15px 0px' }}>
-      <Col span={24}>
-        <MenuAntd items={itens}
-          mode='horizontal'
-          subMenuCloseDelay={0.3}
-          selectedKeys={[selectedKey]}
-          onSelect={onSelect}
-          tabIndex={-1}
-          style={{ borderRadius: '10px' }} />
-      </Col>
-    </Row>
+    <MenuAntd items={itens}
+      tabIndex={-1}
+      mode='vertical'
+      selectedKeys={[selectedKey]}
+      onSelect={onSelect}
+      style={{
+        borderRadius: '10px',
+        border: '1px solid #d9d9d9',
+        height: 'calc(100vh - 16px)',
+      }} />
   );
 }
