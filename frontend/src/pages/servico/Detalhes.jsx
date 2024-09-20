@@ -31,7 +31,6 @@ export default function Detalhes({ id, children, onClose }) {
 
     request('/servico/detalhes', {
       method: 'GET',
-      admin: true,
       params: { id },
     }).then((data) => {
       setLoading(false);
@@ -59,7 +58,6 @@ export default function Detalhes({ id, children, onClose }) {
 
     request('/servico/salvar', {
       method: id ? 'PUT' : 'POST',
-      admin: true,
       body,
     }).then(() => {
       setLoading(false);

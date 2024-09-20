@@ -159,6 +159,10 @@ export class ServicoController {
     try {
       const { id } = req.body;
 
+      if (!req.user.funcionario?.adm) {
+        throw new Error('Apenas administradores podem inativar serviços');
+      }
+
       if (!id) {
         throw new Error('ID não informado');
       }

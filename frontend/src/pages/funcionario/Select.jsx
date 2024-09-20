@@ -5,6 +5,7 @@ export default function FuncionarioSelect(props) {
 
   return (
     <DataSelect {...props}
+      admin={false}
       url='/funcionario/listagem'
       format='nome' />
   );

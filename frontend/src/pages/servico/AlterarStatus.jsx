@@ -60,7 +60,6 @@ export default function AlterarStatus({ id, children, onClose }) {
 
     request('/servico-funcionario/historico', {
       method: 'GET',
-      admin: true,
       params: { servico: id },
     }).then((data) => {
       setLoading(false);
@@ -86,7 +85,6 @@ export default function AlterarStatus({ id, children, onClose }) {
 
     request('/servico-funcionario/alterar-status', {
       method: 'POST',
-      admin: true,
       body,
     }).then(() => {
       setLoading(false);

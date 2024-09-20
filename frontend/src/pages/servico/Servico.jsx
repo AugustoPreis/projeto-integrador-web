@@ -44,7 +44,6 @@ export default function Servico() {
 
     request('/servico/listagem', {
       method: 'GET',
-      admin: true,
       params,
     }).then(({ total, data }) => {
       setLoading(false);
@@ -64,7 +63,6 @@ export default function Servico() {
 
     request('/servico/inativar', {
       method: 'PUT',
-      admin: true,
       body: { id },
     }).then(() => {
       setLoading(false);

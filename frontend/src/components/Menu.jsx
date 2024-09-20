@@ -69,7 +69,12 @@ export default function Menu() {
 
   //remove os cadastros caso não seja admin
   if (!auth.isAdmin()) {
-    itens.splice(1, 2);
+    itens.splice(1, 1);
+  }
+
+  //remove processos caso não seja funcionário
+  if (!auth.user.funcionario) {
+    itens.splice(1, 1);
   }
 
   const onSelect = (e) => {

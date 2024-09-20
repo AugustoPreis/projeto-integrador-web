@@ -5,6 +5,7 @@ export default function ProdutoSelect(props) {
 
   return (
     <DataSelect {...props}
+      admin={false}
       url='/produto/listagem'
       format='nome' />
   );

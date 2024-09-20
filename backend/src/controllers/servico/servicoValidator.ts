@@ -2,7 +2,7 @@ import { Servico } from '.';
 import { TipoServico } from '../tipoServico';
 import { Cliente } from '../cliente';
 import { Produto } from '../produto';
-import { isValidCurrency, isValidString } from '../../utils/validators';
+import { isValidCurrency, isValidNumber, isValidString } from '../../utils/validators';
 
 export class ServicoValidator {
 
@@ -68,8 +68,12 @@ export class ServicoValidator {
   }
 
   validaValor(valor: number): void {
+    if (!isValidNumber(valor) || valor === 0) {
+      return;
+    }
+
     if (!isValidCurrency(valor)) {
-      throw new Error('O valor do serviço é obrigatório');
+      throw new Error('Valor do serviço inválido');
     }
   }
 }
