@@ -9,7 +9,8 @@ const Funcao = lazy(() => import('../pages/funcao/Funcao'));
 const Cliente = lazy(() => import('../pages/cliente/Cliente'));
 const Funcionario = lazy(() => import('../pages/funcionario/Funcionario'));
 const TipoServico = lazy(() => import('../pages/tipoServico/TipoServico'));
-const Produtos = lazy(() => import('../pages/produto/Produto'));
+const Produto = lazy(() => import('../pages/produto/Produto'));
+const Servico = lazy(() => import('../pages/servico/Servico'));
 
 export default function AppRouter() {
   return (
@@ -33,7 +34,9 @@ export default function AppRouter() {
           <Route path='/tipos-servico'
             element={<TipoServico />} />
           <Route path='/produtos'
-            element={<Produtos />} />
+            element={<Produto />} />
+          <Route path='/servicos'
+            element={<Servico />} />
         </Route>
       </Routes>
     </BrowserRouter>

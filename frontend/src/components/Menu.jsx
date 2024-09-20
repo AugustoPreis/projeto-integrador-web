@@ -37,6 +37,10 @@ export default function Menu() {
           key: 'produtos',
           label: 'Produtos',
         },
+        {
+          key: 'servicos',
+          label: 'Serviços',
+        },
       ],
     },
     {
