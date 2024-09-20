@@ -37,6 +37,19 @@ export class ServicoRepository {
       .getManyAndCount();
   }
 
+
+  async listagemFuncionario(params: Pagination): Promise<[Servico[], number]> {
+    return await this.database
+      .createQueryBuilder('servico')
+      .innerJoinAndSelect('servico.cliente', 'cliente')
+      .innerJoinAndSelect('servico.produto', 'produto')
+      .where('servico.ativo IS TRUE')
+      .limit(params.pageSize)
+      .offset((params.current - 1) * params.pageSize)
+      .orderBy('servico.id', 'DESC')
+      .getManyAndCount();
+  }
+
   async byId(id: number): Promise<Servico> {
     return await this.database
       .createQueryBuilder('servico')

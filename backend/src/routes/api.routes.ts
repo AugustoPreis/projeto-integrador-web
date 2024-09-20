@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import isAdmin from '../middlewares/admin';
-import { servicoRoutes } from '../controllers/servico';
+import { servicoController, servicoRoutes } from '../controllers/servico';
 import { servicoFuncionarioRoutes } from '../controllers/servicoFuncionario';
 import { adminRoutes } from './admin.routes';
 import { funcaoController } from '../controllers/funcao';
@@ -29,6 +29,10 @@ routes.get('/produto/listagem', (req, res, next) => {
 
 routes.get('/tipo-servico/listagem', (req, res, next) => {
   tipoServicoController.listagem(req, res, next);
+});
+
+routes.get('/servico/listagem-funcionario', (req, res, next) => {
+  servicoController.listagemFuncionario(req, res, next);
 });
 
 routes.use('/servico', servicoRoutes);

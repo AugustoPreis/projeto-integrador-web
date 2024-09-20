@@ -44,21 +44,60 @@ export class ServicoController {
         params.pageSize = Number(pageSize);
       }
 
-      const [data, total] = await servicoRepository.listagem(params);
+      const [itens, total] = await servicoRepository.listagem(params);
 
-      for (let i = 0; i < data.length; i++) {
-        const item = data[i] as Servico & { status: string };
-
-        const servicoFuncionario = await servicoFuncionarioRepository.statusAtual(item.id);
-
-        item.status = servicoFuncionario?.status;
-      }
+      const data = await this.adicionaStatus(itens);
 
       res.status(200).json({ data, total });
     } catch (err) {
       res.status(404);
       next(err);
     }
+  }
+
+  async listagemFuncionario(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      const { funcionario, current, pageSize } = req.query;
+      const params = {
+        funcionario: null,
+        current: 1,
+        pageSize: 5,
+      };
+
+      if (funcionario) {
+        params.funcionario = Number(funcionario);
+      }
+
+      if (current && pageSize) {
+        params.current = Number(current);
+        params.pageSize = Number(pageSize);
+      }
+
+      const [itens, total] = await servicoRepository.listagemFuncionario(params);
+
+      const data = await this.adicionaStatus(itens);
+
+      res.status(200).json({ data, total });
+    } catch (err) {
+      res.status(404);
+      next(err);
+    }
+  }
+
+  async adicionaStatus(data: Servico[]): Promise<(Servico & { status: string })[]> {
+    const itens = [];
+
+    for (let i = 0; i < data.length; i++) {
+      const item = data[i] as Servico & { status: string };
+
+      const servicoFuncionario = await servicoFuncionarioRepository.statusAtual(item.id);
+
+      item.status = servicoFuncionario?.status;
+
+      itens.push(item);
+    }
+
+    return itens;
   }
 
   async detalhes(req: Request, res: Response, next: NextFunction): Promise<void> {
