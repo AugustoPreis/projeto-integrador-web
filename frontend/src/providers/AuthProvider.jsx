@@ -1,4 +1,4 @@
-import { useContext, createContext, useState, useRef, useEffect } from 'react';
+import { useContext, createContext, useState } from 'react';
 import request from '../utils/request';
 
 const AuthContext = createContext();
@@ -25,19 +25,6 @@ const removeUser = () => {
 
 export default function AuthProvider(props) {
   const [user, setUser] = useState(parseUser);
-  const timeoutRef = useRef(null);
-
-  useEffect(() => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-
-    if (isAuthenticated()) {
-      timeoutRef.current = setTimeout(() => {
-        refreshUser();
-      }, 1000);
-    }
-  }, [user]);
 
   const login = async (values) => {
     const { login, senha, tipo } = values;
@@ -94,21 +81,12 @@ export default function AuthProvider(props) {
     return funcionario.adm || false;
   }
 
-  const refreshUser = () => {
-    const newUser = getUser();
-
-    if (newUser?.id != user?.id) {
-      setUser(newUser);
-    }
-  }
-
   const contextValue = {
     user,
     login,
     logout,
     isAuthenticated,
     isAdmin,
-    refreshUser,
   };
 
   return (
