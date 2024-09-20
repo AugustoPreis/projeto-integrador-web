@@ -66,3 +66,13 @@ export function currency(value: unknown, options: CurrencyOptions = {}): number 
 
   return currency;
 }
+
+export function idParam(value: unknown): number {
+  let id = Number(value);
+
+  if (!isValidNumber(id) || id <= 0) {
+    id = 0;
+  }
+
+  return id;
+}
