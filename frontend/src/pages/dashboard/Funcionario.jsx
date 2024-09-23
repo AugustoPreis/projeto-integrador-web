@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Col, Modal, Row, Table } from 'antd';
 import { getStatusStyle } from '../../utils/statusStyle';
+import { formatCurrency } from '../../utils/currency';
 import request from '../../utils/request';
 
 const initialState = {
@@ -63,10 +64,7 @@ export default function Funcionario() {
       key: 'valor',
       dataIndex: 'valor',
       width: 150,
-      render: (value) => Intl.NumberFormat('pt-BR', {
-        style: 'currency',
-        currency: 'BRL',
-      }).format(value || 0),
+      render: formatCurrency,
     },
   ];
 

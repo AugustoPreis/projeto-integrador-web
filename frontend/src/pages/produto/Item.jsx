@@ -1,17 +1,11 @@
 import React from 'react';
 import { Button, Card, Col, Popconfirm, Row } from 'antd';
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
-import Detalhes from './Detalhes';
 import ItemRender from '../../components/ItemRender';
+import { formatCurrency } from '../../utils/currency';
+import Detalhes from './Detalhes';
 
 export default function Item({ produto, onDelete, fetch }) {
-
-  const formatValor = () => {
-    return Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL'
-    }).format(produto.valor || 0);
-  }
 
   return (
     <Card>
@@ -25,7 +19,7 @@ export default function Item({ produto, onDelete, fetch }) {
             </Col>
             <Col>
               <ItemRender title='Valor:'>
-                {formatValor()}
+                {formatCurrency(produto.valor)}
               </ItemRender>
             </Col>
           </Row>
