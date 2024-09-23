@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { format } from 'date-fns';
-import { Row, Modal, Form, Col, Table, Divider } from 'antd';
+import { Row, Modal, Form, Col, Table, Divider, Input, Tooltip } from 'antd';
+import { InfoCircleTwoTone } from '@ant-design/icons';
 import request from '../../utils/request';
 import FuncionarioSelect from '../funcionario/Select';
 import StatusServicoSelect from '../statusServico/Select';
@@ -39,6 +40,23 @@ export default function AlterarStatus({ id, children, onClose }) {
       dataIndex: 'dataCadastro',
       width: 150,
       render: (value) => value ? format(new Date(value), 'dd/MM/yyyy HH:mm') : '',
+    },
+    {
+      title: '',
+      key: 'observacao',
+      dataIndex: 'observacao',
+      width: 25,
+      render: (value) => {
+        if (!value?.trim()) {
+          return '';
+        }
+
+        return (
+          <Tooltip title={value}>
+            <InfoCircleTwoTone />
+          </Tooltip>
+        )
+      }
     }
   ];
 
@@ -63,7 +81,7 @@ export default function AlterarStatus({ id, children, onClose }) {
       params: { servico: id },
     }).then((data) => {
       setLoading(false);
-      form.setFieldsValue(data[0]);
+      form.setFieldsValue({ ...data[0], observacao: null });
       setHistorico(data);
     }).catch((err) => {
       setLoading(false);
@@ -138,6 +156,13 @@ export default function AlterarStatus({ id, children, onClose }) {
                 label='Status'
                 rules={[{ required: true, message: 'Campo obrigatório' }]}>
                 <StatusServicoSelect />
+              </Form.Item>
+            </Col>
+            <Col span={24}>
+              <Form.Item name='observacao'
+                label='Observação'>
+                <Input.TextArea maxLength={250}
+                  autoSize={{ minRows: 2, maxRows: 5 }} />
               </Form.Item>
             </Col>
             <Col span={24}>

@@ -43,13 +43,14 @@ export class ServicoFuncionarioController {
 
   async alterarStatus(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const { servico, funcionario, status } = req.body;
+      const { servico, funcionario, observacao, status } = req.body;
 
       const servicoFuncionario = new ServicoFuncionario();
 
       servicoFuncionario.status = string(status);
       servicoFuncionario.funcionario = await funcionarioRepository.byId(idParam(funcionario));
       servicoFuncionario.servico = await servicoRepository.byId(idParam(servico));
+      servicoFuncionario.observacao = string(observacao);
 
       servicoFuncionarioValidator.salvar(servicoFuncionario);
 

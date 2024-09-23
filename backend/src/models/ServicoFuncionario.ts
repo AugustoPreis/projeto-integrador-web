@@ -19,6 +19,9 @@ export class ServicoFuncionario {
   @JoinColumn({ name: 'funcionario' })
   funcionario: Funcionario;
 
+  @Column({ name: 'observacao' })
+  observacao: string;
+
   @Column({ name: 'data_cadastro' })
   dataCadastro: Date;
 }
