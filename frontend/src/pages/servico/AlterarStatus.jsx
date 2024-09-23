@@ -93,6 +93,10 @@ export default function AlterarStatus({ id, children, onClose, visualizar }) {
   }
 
   const handleSubmit = (values) => {
+    if (visualizar) {
+      return handleClear();
+    }
+
     setLoading(true);
 
     const body = {
