@@ -5,6 +5,7 @@ export default function StatusSelect(props) {
 
   return (
     <Select {...props}
+      allowClear
       style={{ width: '100%' }}
       options={[
         { value: 'PENDENTE', label: 'Pendente' },
