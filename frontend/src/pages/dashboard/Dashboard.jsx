@@ -1,11 +1,12 @@
 import React from 'react';
-import { Row } from 'antd';
 import { useAuth } from '../../providers/AuthProvider';
 import { useTitle } from '../../hooks/useTitle';
 import Funcionario from './Funcionario';
+import Cliente from './Cliente';
 
 export default function Dashboard() {
   const auth = useAuth();
+
   useTitle('Dashboard');
 
   if (!auth.isAuthenticated()) {
@@ -19,7 +20,6 @@ export default function Dashboard() {
   }
 
   return (
-    <Row>
-    </Row>
+    <Cliente />
   );
 }

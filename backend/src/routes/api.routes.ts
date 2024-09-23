@@ -35,6 +35,10 @@ routes.get('/servico/listagem-funcionario', (req, res, next) => {
   servicoController.listagemFuncionario(req, res, next);
 });
 
+routes.get('/servico/listagem-cliente', (req, res, next) => {
+  servicoController.listagemCliente(req, res, next);
+})
+
 routes.use('/servico', servicoRoutes);
 routes.use('/servico-funcionario', servicoFuncionarioRoutes);
 

@@ -84,6 +84,27 @@ export class ServicoController {
     }
   }
 
+  async listagemCliente(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      const params = {
+        cliente: req.user.cliente?.id,
+      };
+
+      if (!params.cliente) {
+        throw new Error('Cliente não informado');
+      }
+
+      const data = await servicoRepository.listagemCliente(params);
+
+      const result = await this.adicionaStatus(data);
+
+      res.status(200).json(result);
+    } catch (err) {
+      res.status(404);
+      next(err);
+    }
+  }
+
   async adicionaStatus(data: Servico[]): Promise<(Servico & { status: string })[]> {
     const itens = [];
 

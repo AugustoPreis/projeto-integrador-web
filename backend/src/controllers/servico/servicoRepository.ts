@@ -50,6 +50,15 @@ export class ServicoRepository {
       .getManyAndCount();
   }
 
+  async listagemCliente(params: { cliente: number; }): Promise<Servico[]> {
+    return await this.database
+      .createQueryBuilder('servico')
+      .where('servico.ativo IS TRUE')
+      .andWhere('servico.cliente = :cliente', { cliente: params.cliente })
+      .orderBy('servico.id', 'DESC')
+      .getMany();
+  }
+
   async byId(id: number): Promise<Servico> {
     return await this.database
       .createQueryBuilder('servico')
