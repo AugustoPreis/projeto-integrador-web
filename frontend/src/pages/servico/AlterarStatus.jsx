@@ -7,7 +7,7 @@ import FuncionarioSelect from '../funcionario/Select';
 import StatusServicoSelect from '../statusServico/Select';
 import { getStatusStyle } from '../../utils/statusStyle';
 
-export default function AlterarStatus({ id, children, onClose }) {
+export default function AlterarStatus({ id, children, onClose, visualizar }) {
   const [visible, setVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const [historico, setHistorico] = useState([]);
@@ -131,7 +131,7 @@ export default function AlterarStatus({ id, children, onClose }) {
       </span>
       <Modal open={visible}
         title='Status do Serviço'
-        okText='Salvar'
+        okText={visualizar ? 'Fechar' : 'Salvar'}
         centered
         width={650}
         destroyOnClose
@@ -140,31 +140,36 @@ export default function AlterarStatus({ id, children, onClose }) {
         okButtonProps={{ loading }}>
         <Form form={form}
           layout='vertical'
+          disabled={visualizar}
           onFinish={handleSubmit}>
           <Row gutter={[10, 5]}>
-            <Col sm={16}
-              xs={24}>
-              <Form.Item name='funcionario'
-                label='Funcionário'
-                rules={[{ required: true, message: 'Campo obrigatório' }]}>
-                <FuncionarioSelect />
-              </Form.Item>
-            </Col>
-            <Col sm={8}
-              xs={24}>
-              <Form.Item name='status'
-                label='Status'
-                rules={[{ required: true, message: 'Campo obrigatório' }]}>
-                <StatusServicoSelect />
-              </Form.Item>
-            </Col>
-            <Col span={24}>
-              <Form.Item name='observacao'
-                label='Observação'>
-                <Input.TextArea maxLength={250}
-                  autoSize={{ minRows: 2, maxRows: 5 }} />
-              </Form.Item>
-            </Col>
+            {!visualizar ? (
+              <React.Fragment>
+                <Col sm={16}
+                  xs={24}>
+                  <Form.Item name='funcionario'
+                    label='Funcionário'
+                    rules={[{ required: true, message: 'Campo obrigatório' }]}>
+                    <FuncionarioSelect />
+                  </Form.Item>
+                </Col>
+                <Col sm={8}
+                  xs={24}>
+                  <Form.Item name='status'
+                    label='Status'
+                    rules={[{ required: true, message: 'Campo obrigatório' }]}>
+                    <StatusServicoSelect />
+                  </Form.Item>
+                </Col>
+                <Col span={24}>
+                  <Form.Item name='observacao'
+                    label='Observação'>
+                    <Input.TextArea maxLength={250}
+                      autoSize={{ minRows: 2, maxRows: 5 }} />
+                  </Form.Item>
+                </Col>
+              </React.Fragment>
+            ) : null}
             <Col span={24}>
               <Divider style={{ margin: '0px 0px' }} />
               <div style={{
