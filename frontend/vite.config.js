@@ -11,6 +11,10 @@ const PROXY_OPTIONS = {
 
 export default defineConfig({
   plugins: [react()],
+  build: {
+    outDir: '../backend/build/src/dist',
+    emptyOutDir: true,
+  },
   server: {
     port: FRONTEND_PORT,
     proxy: {
