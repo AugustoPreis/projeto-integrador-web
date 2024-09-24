@@ -29,10 +29,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get('*.js', (req, res, next) => {
-	req.url = `${req.url}.gz`;
-
+	// req.url = `${req.url}.gz`;
+	
 	res
-		.set('Content-Encoding', 'gzip')
+		// .set('Content-Encoding', 'gzip')
 		.set('Content-Type', 'application/javascript')
 		.set('Cache-Control', 'public, max-age=31557600');
 
