@@ -1,20 +1,11 @@
 import 'reflect-metadata';
 import pg from 'pg';
 import { DataSource, QueryRunner } from 'typeorm';
+import { configDB } from './config/database';
 
 pg.types.setTypeParser(pg.types.builtins.NUMERIC, Number);
 
-export const Database = new DataSource({
-	host: process.env.DB_HOST,
-	port: Number(process.env.DB_PORT),
-	username: process.env.DB_USER,
-	password: process.env.DB_PASS,
-	database: process.env.DB_NAME,
-	type: 'postgres',
-	synchronize: false,
-	logging: process.env.LOG_SQL === 'TRUE',
-	entities: [`${__dirname}/models/**.{js,ts}`],
-});
+export const Database = new DataSource(configDB());
 
 export async function getQueryRunner(start = true): Promise<QueryRunner> {
 	const qr = Database.createQueryRunner();
