@@ -1,0 +1,31 @@
+services:
+
+  app:
+    build:
+      context: .
+    container_name: app
+    ports:
+      - 3000:3000
+    env_file: ./backend/.env
+    environment:
+      - IS_DOCKER=TRUE
+    depends_on:
+      - postgres-db
+    networks:
+      - my-network
+
+  postgres-db:
+    image: postgres
+    restart: always
+    container_name: postgres-db
+    volumes:
+      - ./src/config/database-seed.sql:/docker-entrypoint-initdb.d/database-seed.sql
+    ports:
+      - 5432:5432
+    env_file: ./backend/.env
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
