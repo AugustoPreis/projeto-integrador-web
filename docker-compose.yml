@@ -16,7 +16,7 @@ services:
 
   postgres-db:
     image: postgres
-    restart: always
+    restart: on-failure
     container_name: postgres-db
     volumes:
       - ./src/config/database-seed.sql:/docker-entrypoint-initdb.d/database-seed.sql
