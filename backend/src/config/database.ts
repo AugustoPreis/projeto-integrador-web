@@ -1,3 +1,4 @@
+import path from 'path';
 import { DataSourceOptions } from 'typeorm';
 
 export function configDB(): DataSourceOptions {
@@ -12,7 +13,7 @@ export function configDB(): DataSourceOptions {
     type: 'postgres',
     synchronize: false,
     logging: env.LOG_SQL === 'TRUE',
-    entities: [`${__dirname}/models/**.{js,ts}`],
+    entities: [path.join(__dirname, '../models/**/*{.ts,.js}')],
   };
 
   if (env.IS_DOCKER === 'TRUE') {
