@@ -44,4 +44,8 @@ routes.use('/servico-funcionario', servicoFuncionarioRoutes);
 
 routes.use('/admin', isAdmin, adminRoutes);
 
+routes.use('/*', (req, res) => {
+  res.status(404).json({ message: `Rota não encontrada: ${req.baseUrl}` });
+});
+
 export { routes as apiRoutes };

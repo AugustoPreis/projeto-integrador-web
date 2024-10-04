@@ -11,8 +11,4 @@ routes.post('/login', (req, res, next) => {
 
 routes.use('/api', auth, apiRoutes);
 
-routes.use('/*', (req, res) => {
-  res.status(404).json({ message: `Rota não encontrada: ${req.baseUrl}` });
-})
-
 export { routes };

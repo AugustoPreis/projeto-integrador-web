@@ -28,9 +28,13 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
+app.use(routes);
+
+app.use(errorHandler);
+
 app.get('*.js', (req, res, next) => {
 	// req.url = `${req.url}.gz`;
-	
+
 	res
 		// .set('Content-Encoding', 'gzip')
 		.set('Content-Type', 'application/javascript')
@@ -40,10 +44,6 @@ app.get('*.js', (req, res, next) => {
 });
 
 app.use(express.static(path.join(__dirname + '/dist')));
-
-app.use(routes);
-
-app.use(errorHandler);
 
 app.get('/*', (_, res) => {
 	res.sendFile(path.join(__dirname, '/dist', 'index.html'));
