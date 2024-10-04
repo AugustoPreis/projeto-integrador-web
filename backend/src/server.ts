@@ -56,6 +56,7 @@ Database.initialize()
 		});
 	}).catch((err) => {
 		logger.message(`Erro ao conectar com o banco de dados: ${err.message}`, 'start');
+		process.exit(1);
 	});
 
 export { app as server }

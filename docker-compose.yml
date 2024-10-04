@@ -3,6 +3,7 @@ services:
   app:
     build:
       context: .
+    restart: on-failure
     container_name: app
     ports:
       - 3000:3000
@@ -16,7 +17,7 @@ services:
 
   postgres-db:
     image: postgres
-    restart: on-failure
+    restart: always
     container_name: postgres-db
     volumes:
       - ./backend/src/config/database-seed.sql:/docker-entrypoint-initdb.d/database-seed.sql
