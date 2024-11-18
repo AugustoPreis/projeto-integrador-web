@@ -25,15 +25,48 @@ CREATE TABLE cliente (
 	fim_acesso timestamp NULL
 );
 
+CREATE TABLE produto (
+	id serial NOT NULL PRIMARY KEY,
+	nome varchar(150) NOT NULL,
+	descricao TEXT,
+	valor numeric(10, 2) NOT NULL,
+	ativo bool DEFAULT TRUE NOT NULL
+);
+
+CREATE TABLE tipo_servico (
+	id serial NOT NULL PRIMARY KEY,
+	descricao varchar(100) NOT NULL,
+	pagador char(1) NOT NULL DEFAULT 'C'
+);
+
+CREATE TABLE servico (
+	id serial NOT NULL PRIMARY KEY,
+	numero int NOT NULL UNIQUE,
+	descricao varchar(150) NOT NULL,
+	observacao TEXT NULL,
+	valor numeric(10, 2),
+	cliente int NOT NULL REFERENCES cliente,
+	produto int NOT NULL REFERENCES produto,
+	tipo_servico int NOT NULL REFERENCES tipo_servico,
+	data_cadastro timestamp NOT NULL DEFAULT current_timestamp,
+	ativo bool DEFAULT TRUE NOT NULL
+);
+
+CREATE TABLE servico_funcionario (
+	id serial NOT NULL PRIMARY KEY,
+	servico int NOT NULL REFERENCES servico,
+	funcionario int NOT NULL REFERENCES funcionario,
+	data_cadastro timestamp NOT NULL DEFAULT current_timestamp,
+	status varchar(20) NOT NULL,
+	observacao varchar(250) NULL
+);
+
 INSERT INTO funcao VALUES
+	(DEFAULT, 'Administrador'),
 	(DEFAULT, 'Gerente'),
 	(DEFAULT, 'Engenheiro'),
 	(DEFAULT, 'Mecânico'),
-	(DEFAULT, 'Administrador'),
 	(DEFAULT, 'Contador');
 	
 INSERT INTO funcionario VALUES
-	(DEFAULT, 'SISTEMA', 'sistema', '$2b$10$EnwBQKjJ2VMIGyVL9Quh5ebSQynUJTNt4I179wPKPMip/mIikB5sq', TRUE, TRUE, 1);
-
-INSERT INTO cliente VALUES
-	(DEFAULT, 'Cliente 1', '99999999999', 'cliente1@gmail.com', 'cliente1', '$2b$10$EnwBQKjJ2VMIGyVL9Quh5ebSQynUJTNt4I179wPKPMip/mIikB5sq', TRUE, current_timestamp);
+	(DEFAULT, 'ADMIN', 'admin', '$2b$10$BMhXM3E8B7u2ksp2hjz72u4oSoIVQXu8Rak3xJLbUya8YrCpVnD6W', TRUE, TRUE, 1);
