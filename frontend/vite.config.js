@@ -12,7 +12,7 @@ const PROXY_OPTIONS = {
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: '../backend/build/src/dist',
+    outDir: './dist',
     emptyOutDir: true,
   },
   server: {

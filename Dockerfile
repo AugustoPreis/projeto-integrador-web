@@ -19,6 +19,7 @@ FROM node:20-alpine AS build-final
 WORKDIR /app
 COPY --from=build-backend /app/backend/build /app
 COPY --from=build-backend /app/backend/*.env /app
+COPY --from=build-frontend /app/frontend/dist /app/src/dist
 WORKDIR /app
 RUN npm install --only=production
 
