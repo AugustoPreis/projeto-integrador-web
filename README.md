@@ -46,6 +46,10 @@ DB_PORT=5432
 #A alteração desse valor resultará em problemas no cliente e funcionário inserido automaticamente pelo sistema
 JWT_TOKEN=JFiFNSnf0SNand91M8nf
 
+#Chave de encriptação de senhas
+#A alteração desse valor resultará em problemas no cliente e funcionário inserido automaticamente pelo sistema
+AES_256_CBC_KEY=3L4Fiz2FPFFnyyfMZwueGw==
+
 #Tempo de duração do login (1d até 365d)
 JWT_EXPIRE=1d
 
