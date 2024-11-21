@@ -5,7 +5,7 @@ Disciplina da 4ª fase do curso de Engenharia de Software, visa a construção d
 ## Integrantes
 - Augusto Preis Tomasi
 - Giovanni Zanette Meller
-- Luíza Arend da Silva
+- Maria Luíza Arend da Silva
 
 ## Tecnologias utilizadas
 
